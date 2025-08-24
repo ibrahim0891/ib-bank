@@ -1,7 +1,7 @@
 import { getSavedData, saveData } from "./utils.js";
 
 
-let savedUserInfo =  getSavedData('database')
+let savedUserInfo =  getSavedData('database') || {}
 
 let BankDatabase = {}
 
@@ -76,19 +76,18 @@ let Bank = {
 }
 
 
-if (!savedUserInfo) {
+if (Object.keys(savedUserInfo).length != 0) {
     for (const key in savedUserInfo) {
         let user = savedUserInfo[key]
         Bank.createAccount(user.id, user.name, user.mobile, user.pin, user.balance)
-    }
+    } 
 } else {
     Bank.createAccount('101', 'Alice', '12345678', '1234', 5000);
     Bank.createAccount('102', 'Bob', '87654321', '5678', 3000);
     saveData('database', BankDatabase)
 }
+ 
 
-
-console.log(BankDatabase , savedUserInfo);
 
 
 export { Bank, BankDatabase }

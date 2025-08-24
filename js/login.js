@@ -14,7 +14,7 @@ loginForm.addEventListener('submit', (e) => {
     let result = Bank.login(mobile, pin)
     if (result) {
         saveData('user', result)
-        window.location.href = '/main.html'
+        window.location.href = '/index.html'
     } else {
         alert('Invalid Credentail')
     }

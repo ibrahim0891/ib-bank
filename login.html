@@ -12,13 +12,13 @@
             * {
                 font-family: 'poppins';
             }
-            </style>
-            <script>
-                let savedUser = JSON.parse(localStorage.getItem('user'))
-                if(savedUser) {
-                    window.location.href = './main.html'
-                }
-            </script>
+        </style>
+        <script>
+            let savedUser = JSON.parse(localStorage.getItem('user'))
+            if (savedUser) {
+                window.location.href = './main.html'
+            }
+        </script>
     </head>
 
     <body class="max-w-[450px] m-auto bg-[#f4f5f7]">
@@ -32,12 +32,23 @@
 
                     <fieldset class="flex flex-col space-y-3 mb-4">
                         <label class="font-bold" for="mobile">Mobile Number</label>
+
                         <input type="text" name="" id="mobile"
                             class=" rounded-full w-full border-0 bg-slate-100 px-6 py-4"
-                            placeholder="Enter mobile number">
+                            placeholder="Enter mobile number" list="phone-numbers">
+                        <datalist id="phone-numbers">
+                            <option value="12345678"></option>
+                            <option value="87654321"></option>
+                        </datalist>
+
                         <label class="font-bold" for="pin">4 Digit pin</label>
                         <input type="text" name="" id="pin" class=" rounded-full w-full border-0 bg-slate-100 px-6 py-4"
-                            placeholder="Enter 4 Digit Pin">
+                            placeholder="Enter 4 Digit Pin" list="pins">
+                        <datalist id="pins">
+                            <option value="1234"></option>
+                            <option value="5678"></option>
+                        </datalist>
+                        
                     </fieldset>
 
                     <button type="submit" class="btn bg-[#0874f2] text-white rounded-full w-full p-6">Login</button>
@@ -46,7 +57,7 @@
 
         </div>
 
-        
+
         <script src="./js/login.js" type="module"></script>
 
 
