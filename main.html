@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Payhoo Bank PLC </title>
+        <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <script type="module" src="https://unpkg.com/cally"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+            integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <style type="text/tailwindcss">
+            * {
+                font-family: 'poppins';
+            }
+            .internal-form {
+                @apply bg-white rounded-3xl p-6 space-y-4 ; 
+                .input-group{
+                    @apply mb-4; 
+
+                    label{
+                        @apply mb-3 font-bold block ;
+                    }
+                    input , .input-container  {
+                        @apply w-full px-6 py-4 rounded-full bg-gray-100 text-gray-500 border-0 focus:outline-none; 
+                    }
+                }
+                button{
+                    @apply rounded-full w-full transition-all duration-200 active:scale-95 cursor-pointer bg-blue-500 text-white font-bold py-4;
+                }
+            }
+             
+        </style>
+        <script>
+            let logout = () => {
+                localStorage.removeItem('user')
+                window.location.href = './login.html'
+            }
+        </script>
+    </head>
+
+    <body class="max-w-[450px] m-auto bg-[#f4f5f7] min-h-screen">
+
+        <!-- page padding div -->
+        <!-- back bar  -->
+        <div class="flex items-center justify-between  py-5 bg-white px-6 shadow-sm">
+            <div class="flex items-center gap-2">
+                <img class="w-12" src="./assets/Group.png" alt="">
+                <div class="">
+                    <span class="font-bold text-lg">$</span>
+                    <p class="font-bold text-lg inline" id="current-balance">Loading...</p>
+                    <p class="text-sm" id="show-user-info"> </p>
+                </div>
+            </div>
+            <button class="btn  border-r-gray-400 flex items-center justify-center gap-2"
+                onclick="logout()">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <span>Logout</span>
+            </button>
+        </div>
+        <div class="px-6 bg-white rounded-b-3xl">
+
+            <section class="space-y-2 pt-8 ">
+                <h1 class="text-2xl font-bold">🔥 Welcome to Payooo</h1>
+                <p class="text-gray-700">Enjoy easy and convenient financial services with us. Cashout charge is low and
+                </p>
+            </section>
+            <section class=" py-6 ">
+                <div class="grid grid-cols-3  gap-4 text-center">
+
+                    <div
+                        class="border border-gray-200 flex items-center justify-center flex-col rounded-2xl md py-4 text-gray-600 font-serif  space-y-4">
+                        <img src="./assets/wallet1.png" alt="">
+                        <span>Add money</span>
+
+                    </div>
+
+                    <div
+                        class="border border-gray-200 flex items-center justify-center flex-col rounded-2xl  py-4 text-gray-600 font-serif  space-y-4">
+                        <img src="./assets/send1.png" alt="">
+                        <span>Cash out</span>
+                    </div>
+                    <div
+                        class="border border-gray-200 flex items-center justify-center flex-col rounded-2xl  py-4 text-gray-600 font-serif  space-y-4">
+                        <img src="./assets/bonus1.png" alt="">
+                        <span>Transfer Money</span>
+                    </div>
+                    <div
+                        class="border border-gray-200 flex items-center justify-center flex-col rounded-md py-4 text-gray-600 font-serif space-y-4">
+                        <img src="./assets/money1.png" alt="">
+                        <span>Get Bonus</span>
+                    </div>
+                    <div
+                        class="border border-gray-200 flex items-center justify-center flex-col rounded-md py-4 text-gray-600 font-serif space-y-4">
+                        <img src="./assets/purse1.png" alt="">
+                        <span>Pay bill</span>
+                    </div>
+                    <div
+                        class="border border-gray-200 flex items-center justify-center flex-col rounded-md py-4 text-gray-600 font-serif space-y-4">
+                        <img src="./assets/transaction1.png" alt="">
+                        <span>Transection </span>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+
+
+        <!-- //add money  -->
+        <section class="px-6 pt-8 pb-8">
+            <div class="mb-4">
+                <h2 class="text-lg font-bold">Add money</h2>
+            </div>
+            <form class="internal-form">
+
+                <div class=" input-group">
+                    <label for="selectBank">Amount to Add</label>
+                    <input type="text" placeholder="Add amount to add" id="amount-to-add">
+                </div>
+                <div class="input-group">
+                    <label for="selectBank">Pin Number</label>
+                    <input type="text" placeholder="Enter 4 digit pin number" id="add-money-pin">
+                </div>
+                <button id="add-money-button">Add money</button>
+            </form>
+        </section>
+
+        <!-- cash out -->
+        <section class="px-6 pt-8 pb-8">
+            <div class="mb-4">
+                <h2 class="text-lg font-bold">Cash Out</h2>
+            </div>
+            <div class="internal-form" onsubmit="(e) => e.preventDefault()">
+                <div class="input-group">
+                    <label for="selectBank">Agent Number </label>
+                    <input type="number" placeholder="Enter 11 Digit Bank Account Number"">
+                </div>
+                <div class=" input-group">
+                    <label for="selectBank">Amount</label>
+                    <input type="text" placeholder="Add amount to widthdraw" id="cash-out-amount">
+                </div>
+                <div class="input-group">
+                    <label for="selectBank">Pin Number</label>
+                    <input type="text" placeholder="Enter 4 digit pin number" id="cash-out-pin">
+                </div>
+                <button id="cash-out-button">Withdraw money</button>
+                </form>
+        </section>
+
+        <!-- transfer number  -->
+        <section class="px-6 pt-8 pb-8">
+            <div class="mb-4">
+                <h2 class="text-lg font-bold">Transfer Money</h2>
+            </div>
+            <div class="internal-form" onsubmit="(e) => e.preventDefault()">
+                <div class="input-group">
+                    <label for="selectBank">Reciever Account Numberr </label>
+                    <input type="number" placeholder="Enter receiver Bank Account Number" id="receiver-id">
+                </div>
+                <div class=" input-group">
+                    <label for="selectBank">Amount</label>
+                    <input type="text" placeholder="Add amount to Transfer" id="transfer-amount">
+                </div>
+                <div class="input-group">
+                    <label for="selectBank">Pin Number</label>
+                    <input type="text" placeholder="Enter 4 digit pin number" id="transfer-pin">
+                </div>
+                <button id="transfer-button">Send Now</button>
+                </form>
+        </section>
+
+        <!-- get bonus by coupon  -->
+        <section class="px-6 pt-8 pb-8">
+            <div class="mb-4">
+                <h2 class="text-lg font-bold">Get Bonus</h2>
+            </div>
+            <div class="internal-form" onsubmit="(e) => e.preventDefault()">
+                <div class="input-group">
+                    <label for="selectBank">Enter Bonus Coupon</label>
+                    <input type="number" placeholder="Enter your coupon" id="coupon-number">
+                </div>
+                <button id="coupon-button">Get bonus</button>
+                </form>
+        </section>
+
+        
+        <section class="px-6 pt-8 pb-8">
+            <div class="mb-4">
+                <h2 class="text-lg font-bold">Pay bill</h2>
+            </div>
+            <div class="internal-form" onsubmit="(e) => e.preventDefault()">
+                <div class="input-group">
+                    <label for="selectBank">Select to pay </label>
+                    <div class="input-container">
+                        <select class=" border-none w-full focus:outline-none">
+                            <option disabled selected>Select Bank </option>
+                            <option>United Commertial Bank</option>
+                            <option>City Bank</option>
+                            <option>Prime asia bank</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="selectBank">Biller Account Number </label>
+                    <input type="number" placeholder="Enter 11 Digit Bank Account Number"">
+                        </div>
+                        <div class=" input-group">
+                    <label for="selectBank">Amount to Add</label>
+                    <input type="text" placeholder="Add amount to add">
+                </div>
+                <div class="input-group">
+                    <label for="selectBank">Pin Number</label>
+                    <input type="text" placeholder="Enter 4 digit pin number">
+                </div>
+                <button>Pay Now</button>
+                </form>
+        </section>
+    </body>
+
+    <script src="./js/main.js" type="module"></script>
+
+</html>
