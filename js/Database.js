@@ -84,8 +84,8 @@ if (Object.keys(savedUserInfo).length != 0) {
         Bank.createAccount(user.id, user.name, user.mobile, user.pin, user.balance)
     }
 } else {
-    Bank.createAccount('101', 'Alice', '12345678', '1234', 5000);
-    Bank.createAccount('102', 'Bob', '87654321', '5678', 3000);
+    Bank.createAccount('101', 'Alice', '12345678', '1234', 1000);
+    Bank.createAccount('102', 'Bob', '87654321', '5678', 1000);
     saveData('database', BankDatabase)
 }
 
