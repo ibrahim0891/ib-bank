@@ -12,9 +12,13 @@
             integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
             crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+
         <style type="text/tailwindcss">
             * {
-                font-family: 'poppins';
+               font-family: "Lexend", sans-serif;
             }
             .internal-form {
                 @apply bg-white rounded-3xl p-6 space-y-4 ; 
@@ -32,7 +36,14 @@
                     @apply rounded-full w-full transition-all duration-200 active:scale-95 cursor-pointer bg-blue-500 text-white font-bold py-4;
                 }
             }
-             
+            .tab-btn {
+                @apply py-2 px-4 rounded-md cursor-pointer text-gray-600 font-semibold;
+            }
+            .tab-card-active {
+                @apply bg-blue-50 border-blue-400;
+            }
+              
+
         </style>
         <script>
             let logout = () => {
@@ -55,10 +66,9 @@
                     <p class="text-sm" id="show-user-info"> </p>
                 </div>
             </div>
-            <button class="btn  border-r-gray-400 flex items-center justify-center gap-2"
-                onclick="logout()">
-                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            <button class="border px-5 py-2 rounded-md btn text-gray-500 flex items-center justify-center gap-2" onclick="logout()">
                 <span>Logout</span>
+                <i class="fa-solid fa-arrow-right-from-bracket "></i>
             </button>
         </div>
         <div class="px-6 bg-white rounded-b-3xl">
@@ -71,52 +81,55 @@
             <section class=" py-6 ">
                 <div class="grid grid-cols-3  gap-4 text-center">
 
-                    <div
-                        class="border border-gray-200 flex items-center justify-center flex-col rounded-2xl md py-4 text-gray-600 font-serif  space-y-4">
+                    <div class="tab-card border border-gray-200 flex items-center justify-center flex-col rounded-2xl py-4 text-gray-600 font-serif space-y-4"
+                        data-tab="add-money">
                         <img src="./assets/wallet1.png" alt="">
                         <span>Add money</span>
-
                     </div>
 
-                    <div
-                        class="border border-gray-200 flex items-center justify-center flex-col rounded-2xl  py-4 text-gray-600 font-serif  space-y-4">
+                    <div class="tab-card border border-gray-200 flex items-center justify-center flex-col rounded-2xl py-4 text-gray-600 font-serif space-y-4"
+                        data-tab="cash-out">
                         <img src="./assets/send1.png" alt="">
                         <span>Cash out</span>
                     </div>
-                    <div
-                        class="border border-gray-200 flex items-center justify-center flex-col rounded-2xl  py-4 text-gray-600 font-serif  space-y-4">
+
+                    <div class="tab-card border border-gray-200 flex items-center justify-center flex-col rounded-2xl py-4 px-2 text-gray-600 font-serif space-y-4"
+                        data-tab="transfer-money">
                         <img src="./assets/bonus1.png" alt="">
                         <span>Transfer Money</span>
                     </div>
-                    <div
-                        class="border border-gray-200 flex items-center justify-center flex-col rounded-md py-4 text-gray-600 font-serif space-y-4">
+
+                    <div class="tab-card border border-gray-200 flex items-center justify-center flex-col rounded-md py-4 text-gray-600 font-serif space-y-4"
+                        data-tab="get-bonus">
                         <img src="./assets/money1.png" alt="">
                         <span>Get Bonus</span>
                     </div>
-                    <div
-                        class="border border-gray-200 flex items-center justify-center flex-col rounded-md py-4 text-gray-600 font-serif space-y-4">
+
+                    <div class="tab-card border border-gray-200 flex items-center justify-center flex-col rounded-md py-4 text-gray-600 font-serif space-y-4"
+                        data-tab="pay-bill">
                         <img src="./assets/purse1.png" alt="">
                         <span>Pay bill</span>
                     </div>
-                    <div
-                        class="border border-gray-200 flex items-center justify-center flex-col rounded-md py-4 text-gray-600 font-serif space-y-4">
+
+                    <div class="tab-card border border-gray-200 flex items-center justify-center flex-col rounded-md py-4 text-gray-600 font-serif space-y-4"
+                        data-tab="transection">
                         <img src="./assets/transaction1.png" alt="">
-                        <span>Transection </span>
+                        <span>Transection</span>
                     </div>
+
 
                 </div>
             </section>
         </div>
 
 
-        <!-- //add money  -->
-        <section class="px-6 pt-8 pb-8">
+        <!-- Add money -->
+        <section id="add-money" class="px-6 pt-8 pb-8">
             <div class="mb-4">
                 <h2 class="text-lg font-bold">Add money</h2>
             </div>
             <form class="internal-form">
-
-                <div class=" input-group">
+                <div class="input-group">
                     <label for="selectBank">Amount to Add</label>
                     <input type="text" placeholder="Add amount to add" id="amount-to-add">
                 </div>
@@ -128,17 +141,17 @@
             </form>
         </section>
 
-        <!-- cash out -->
-        <section class="px-6 pt-8 pb-8">
+        <!-- Cash out -->
+        <section id="cash-out" class="px-6 pt-8 pb-8 hidden">
             <div class="mb-4">
                 <h2 class="text-lg font-bold">Cash Out</h2>
             </div>
             <div class="internal-form" onsubmit="(e) => e.preventDefault()">
                 <div class="input-group">
                     <label for="selectBank">Agent Number </label>
-                    <input type="number" placeholder="Enter 11 Digit Bank Account Number"">
+                    <input type="number" placeholder="Enter 11 Digit Bank Account Number">
                 </div>
-                <div class=" input-group">
+                <div class="input-group">
                     <label for="selectBank">Amount</label>
                     <input type="text" placeholder="Add amount to widthdraw" id="cash-out-amount">
                 </div>
@@ -147,20 +160,20 @@
                     <input type="text" placeholder="Enter 4 digit pin number" id="cash-out-pin">
                 </div>
                 <button id="cash-out-button">Withdraw money</button>
-                </form>
+            </div>
         </section>
 
-        <!-- transfer number  -->
-        <section class="px-6 pt-8 pb-8">
+        <!-- Transfer Money -->
+        <section id="transfer-money" class="px-6 pt-8 pb-8 hidden">
             <div class="mb-4">
                 <h2 class="text-lg font-bold">Transfer Money</h2>
             </div>
             <div class="internal-form" onsubmit="(e) => e.preventDefault()">
                 <div class="input-group">
-                    <label for="selectBank">Reciever Account Numberr </label>
+                    <label for="selectBank">Reciever Account Number</label>
                     <input type="number" placeholder="Enter receiver Bank Account Number" id="receiver-id">
                 </div>
-                <div class=" input-group">
+                <div class="input-group">
                     <label for="selectBank">Amount</label>
                     <input type="text" placeholder="Add amount to Transfer" id="transfer-amount">
                 </div>
@@ -169,25 +182,25 @@
                     <input type="text" placeholder="Enter 4 digit pin number" id="transfer-pin">
                 </div>
                 <button id="transfer-button">Send Now</button>
-                </form>
+            </div>
         </section>
 
-        <!-- get bonus by coupon  -->
-        <section class="px-6 pt-8 pb-8">
+        <!-- Get Bonus -->
+        <section id="get-bonus" class="px-6 pt-8 pb-8 hidden">
             <div class="mb-4">
                 <h2 class="text-lg font-bold">Get Bonus</h2>
             </div>
             <div class="internal-form" onsubmit="(e) => e.preventDefault()">
                 <div class="input-group">
-                    <label for="selectBank">Enter Bonus Coupon</label>
-                    <input type="number" placeholder="Enter your coupon" id="coupon-number">
+                    <label for="selectBank">Enter Bonus Coupon </label> 
+                    <input type="number" placeholder="'2025' - try multiple time" id="coupon-number">
                 </div>
                 <button id="coupon-button">Get bonus</button>
-                </form>
+            </div>
         </section>
 
-        
-        <section class="px-6 pt-8 pb-8">
+        <!-- Pay Bill -->
+        <section id="pay-bill" class="px-6 pt-8 pb-8 hidden">
             <div class="mb-4">
                 <h2 class="text-lg font-bold">Pay bill</h2>
             </div>
@@ -195,7 +208,7 @@
                 <div class="input-group">
                     <label for="selectBank">Select to pay </label>
                     <div class="input-container">
-                        <select class=" border-none w-full focus:outline-none">
+                        <select class="border-none w-full focus:outline-none">
                             <option disabled selected>Select Bank </option>
                             <option>United Commertial Bank</option>
                             <option>City Bank</option>
@@ -205,9 +218,9 @@
                 </div>
                 <div class="input-group">
                     <label for="selectBank">Biller Account Number </label>
-                    <input type="number" placeholder="Enter 11 Digit Bank Account Number"">
-                        </div>
-                        <div class=" input-group">
+                    <input type="number" placeholder="Enter 11 Digit Bank Account Number">
+                </div>
+                <div class="input-group">
                     <label for="selectBank">Amount to Add</label>
                     <input type="text" placeholder="Add amount to add">
                 </div>
@@ -215,10 +228,47 @@
                     <label for="selectBank">Pin Number</label>
                     <input type="text" placeholder="Enter 4 digit pin number">
                 </div>
-                <button>Pay Now</button>
-                </form>
+                <button class="disabled:backdrop-grayscale" disabled>Pay Now</button>
+            </div>
         </section>
+        <!-- Transection -->
+        <section id="transection" class="px-6 pt-8 pb-8 hidden">
+            <div class="w-full h-full flex items-center justify-center flex-col gap-4">
+                <img class="w-2/3" src="https://cdn1.iconfinder.com/data/icons/characters-and-objects/512/web_development_character_builder___webpage_website_setup_build_dashboard_teamwork_team_work.png" alt="" srcset="">
+                <p class="font-bold text-2xl text-center text-gray-500">Page is under constrction!</p>
+                <p class="text-center -mt-2 text-gray-400"> I'm working on this page now. It will be available soon!</p>
+            </div>
+        </section>
+
+
+
     </body>
+
+    <script>
+
+        const tabCards = document.querySelectorAll(".tab-card");
+        const tabSections = document.querySelectorAll("section[id]");
+
+        tabSections.forEach(sec => sec.classList.add("hidden"));
+        document.getElementById("add-money").classList.remove("hidden");
+        tabCards[0].classList.add("tab-card-active");
+
+        tabCards.forEach(card => {
+            card.addEventListener("click", () => {
+                const target = card.dataset.tab;
+
+                tabSections.forEach(sec => sec.classList.add("hidden"));
+
+                tabCards.forEach(c => c.classList.remove("tab-card-active"));
+
+                const section = document.getElementById(target);
+                if (section) section.classList.remove("hidden");
+
+                card.classList.add("tab-card-active");
+            });
+        });
+
+    </script>
 
     <script src="./js/index.js" type="module"></script>
 

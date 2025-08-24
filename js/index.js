@@ -59,7 +59,9 @@ transferButton.addEventListener('click', (e) => {
     let amountToTransfer = Number(returnElementById('transfer-amount').value)
     let transferPin = returnElementById('transfer-pin').value
     Bank.transferMoney(user.id , receiverId , amountToTransfer , transferPin)
-    displayBalance.innerText = user['balance']
+    
+    displayBalance.innerText = BankDatabase[userId].balance
+     
     saveData('database',BankDatabase)
 })
 
@@ -73,7 +75,7 @@ couponButton.addEventListener('click', (e) => {
     let couponGift  = 100
     let user = BankDatabase[userId]
     couponNumber == COUPON_NUMBER && couponUsed == false ? user.deposite(couponGift, 'bank-transfer') : alert('Ek bonus koybar nibi vai! Eto lov ken?')
-    couponUsed = true 
+    couponUsed = true  
     displayBalance.innerText = user['balance']
     saveData('database',BankDatabase)
 })
