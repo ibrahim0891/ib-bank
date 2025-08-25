@@ -19,7 +19,7 @@
         <style type="text/tailwindcss">
             * {
                font-family: "Lexend", sans-serif;
-                cursor: none !important;
+                /* cursor: none !important; */
             }
  
             .internal-form {
@@ -55,67 +55,69 @@
         </script>
     </head>
 
-    <body class="max-w-[450px] m-auto bg-[#f4f5f7] min-h-screen">
+    <body class="max-w-[] bg-[#f4f5f7]  min-h-screen flex flex-col">
 
         <!-- page padding div -->
-        <!-- back bar  -->
-        <div class="flex items-center justify-between  py-5 bg-white px-6 shadow-sm sticky top-0">
-            <div class="flex items-center gap-2">
-                <img class="w-12" src="./assets/Group.png" alt="">
-                <div class="">
-                    <span class="font-bold text-lg">$</span>
-                    <p class="font-bold text-lg inline" id="current-balance">Loading...</p>
-                    <p class="text-sm" id="show-user-info"> </p>
+        <!-- back bar  --> 
+            <div class="flex items-center justify-between  py-5 bg-white px-6 shadow-sm  sticky top-0">
+                <div class="flex items-center gap-2">
+                    <img class="w-12" src="./assets/Group.png" alt="">
+                    <div class="">
+                        <span class="font-bold text-lg">$</span>
+                        <p class="font-bold text-lg inline" id="current-balance">Loading...</p>
+                        <p class="text-sm" id="show-user-info"> </p>
+                    </div>
                 </div>
+                <button class="border px-5 py-2 rounded-md btn text-gray-500 flex items-center justify-center gap-2"
+                    onclick="logout()">
+                    <span>Logout</span>
+                    <i class="fa-solid fa-arrow-right-from-bracket "></i>
+                </button>
             </div>
-            <button class="border px-5 py-2 rounded-md btn text-gray-500 flex items-center justify-center gap-2"
-                onclick="logout()">
-                <span>Logout</span>
-                <i class="fa-solid fa-arrow-right-from-bracket "></i>
-            </button>
-        </div>
-
-        <div class="px-6 bg-white rounded-b-3xl">
-
-            <section class="space-y-2 pt-8 ">
+            <section class="space-y-2 pt-4 sm:pt-4 px-6 bg-white sm:pb-6">
                 <h1 class="text-2xl font-bold">🔥 Welcome to Payooo</h1>
-                <p class="text-gray-700">Enjoy easy and convenient financial services with us. Cashout charge is low and
+                <p class="text-gray-700">Enjoy easy and convenient financial services with us. Cashout charge is low
+                    and
                 </p>
-            </section>
-            <section class=" py-6 ">
-                <div class="grid grid-cols-3  gap-4 text-center">
+            </section> 
 
-                    <div class="tab-card border border-gray-200 flex items-center justify-center flex-col rounded-2xl py-4 text-gray-600 font-serif space-y-4"
+        <div class="sm:grid grid-cols-[200px_1fr] flex-1 min-h-0">
+
+            <div class="px-6 bg-white  rounded-b-3xl  sm:rounded-none ">
+
+                <!-- sidebar  -->
+                <div class="grid grid-cols-3 sm:grid-cols-1 gap-4 text-center py-6">
+                    <div class="tab-card border border-gray-200 flex items-center justify-center flex-col rounded-2xl py-4 text-gray-600 font-serif space-y-4 "
                         data-tab="add-money">
                         <img src="./assets/wallet1.png" alt="">
                         <span>Add money</span>
                     </div>
 
-                    <div class="tab-card border border-gray-200 flex items-center justify-center flex-col rounded-2xl py-4 text-gray-600 font-serif space-y-4"
+                    <div class="tab-card border border-gray-200 flex items-center justify-center flex-col rounded-2xl py-4 text-gray-600 font-serif space-y-4 "
                         data-tab="cash-out">
                         <img src="./assets/send1.png" alt="">
                         <span>Cash out</span>
                     </div>
 
-                    <div class="tab-card border border-gray-200 flex items-center justify-center flex-col rounded-2xl py-4 px-2 text-gray-600 font-serif space-y-4"
+                    <div class="tab-card border border-gray-200 flex items-center justify-center flex-col rounded-2xl py-4 px-2 text-gray-600 font-serif space-y-4 "
                         data-tab="transfer-money">
                         <img src="./assets/bonus1.png" alt="">
                         <span>Transfer Money</span>
                     </div>
 
-                    <div class="tab-card border border-gray-200 flex items-center justify-center flex-col rounded-md py-4 text-gray-600 font-serif space-y-4"
+                    <div class="tab-card border border-gray-200 flex items-center justify-center flex-col rounded-md py-4 text-gray-600 font-serif space-y-4 "
                         data-tab="get-bonus">
                         <img src="./assets/money1.png" alt="">
                         <span>Get Bonus</span>
                     </div>
 
-                    <div class="tab-card border border-gray-200 flex items-center justify-center flex-col rounded-md py-4 text-gray-600 font-serif space-y-4"
+                    <div class="tab-card border border-gray-200 flex items-center justify-center flex-col rounded-md py-4 text-gray-600 font-serif space-y-4 "
                         data-tab="pay-bill">
                         <img src="./assets/purse1.png" alt="">
                         <span>Pay bill</span>
                     </div>
 
-                    <div class="tab-card border border-gray-200 flex items-center justify-center flex-col rounded-md py-4 text-gray-600 font-serif space-y-4"
+                    <div class="tab-card border border-gray-200 flex items-center justify-center flex-col rounded-md py-4 text-gray-600 font-serif space-y-4 "
                         data-tab="transection">
                         <img src="./assets/transaction1.png" alt="">
                         <span>Transection</span>
@@ -123,138 +125,143 @@
 
 
                 </div>
-            </section>
+
+            </div>
+            <div class="w-full h-full overflow-y-auto">
+
+                <div class="sm:w-3/4 md:w-2/3 lg:w-3/5 xl:w-2/5  m-auto h-full ">
+                    <!-- Add money -->
+                    <section id="add-money" class="px-6 pt-8 pb-8">
+                        <div class="mb-4">
+                            <h2 class="text-lg font-bold">Add money</h2>
+                        </div>
+                        <form class="internal-form">
+                            <div class="input-group">
+                                <label for="selectBank">Amount to Add</label>
+                                <input type="text" placeholder="Add amount to add" id="amount-to-add">
+                            </div>
+                            <div class="input-group">
+                                <label for="selectBank">Pin Number</label>
+                                <input type="text" placeholder="Enter 4 digit pin number" id="add-money-pin">
+                            </div>
+                            <button id="add-money-button">Add money</button>
+                        </form>
+                    </section>
+
+                    <!-- Cash out -->
+                    <section id="cash-out" class="px-6 pt-8 pb-8 hidden">
+                        <div class="mb-4">
+                            <h2 class="text-lg font-bold">Cash Out</h2>
+                        </div>
+                        <div class="internal-form" onsubmit="(e) => e.preventDefault()">
+                            <div class="input-group">
+                                <label for="selectBank">Agent Number </label>
+                                <input type="number" placeholder="Enter 11 Digit Bank Account Number">
+                            </div>
+                            <div class="input-group">
+                                <label for="selectBank">Amount</label>
+                                <input type="text" placeholder="Add amount to widthdraw" id="cash-out-amount">
+                            </div>
+                            <div class="input-group">
+                                <label for="selectBank">Pin Number</label>
+                                <input type="text" placeholder="Enter 4 digit pin number" id="cash-out-pin">
+                            </div>
+                            <button id="cash-out-button">Withdraw money</button>
+                        </div>
+                    </section>
+
+                    <!-- Transfer Money -->
+                    <section id="transfer-money" class="px-6 pt-8 pb-8 hidden">
+                        <div class="mb-4">
+                            <h2 class="text-lg font-bold">Transfer Money</h2>
+                        </div>
+                        <div class="internal-form" onsubmit="(e) => e.preventDefault()">
+                            <div class="input-group">
+                                <label for="selectBank">Reciever Account Number</label>
+                                <input type="number" placeholder="Enter receiver Bank Account Number" id="receiver-id">
+                            </div>
+                            <div class="input-group">
+                                <label for="selectBank">Amount</label>
+                                <input type="text" placeholder="Add amount to Transfer" id="transfer-amount">
+                            </div>
+                            <div class="input-group">
+                                <label for="selectBank">Pin Number</label>
+                                <input type="text" placeholder="Enter 4 digit pin number" id="transfer-pin">
+                            </div>
+                            <button id="transfer-button">Send Now</button>
+                        </div>
+                    </section>
+
+                    <!-- Get Bonus -->
+                    <section id="get-bonus" class="px-6 pt-8 pb-8 hidden">
+                        <div class="mb-4">
+                            <h2 class="text-lg font-bold">Get Bonus</h2>
+                        </div>
+                        <div class="internal-form" onsubmit="(e) => e.preventDefault()">
+                            <div class="input-group">
+                                <label for="selectBank">Enter Bonus Coupon </label>
+                                <input type="number" placeholder="'2025' - try multiple time" id="coupon-number">
+                            </div>
+                            <button id="coupon-button">Get bonus</button>
+                        </div>
+                    </section>
+
+                    <!-- Pay Bill -->
+                    <section id="pay-bill" class="px-6 pt-8 pb-8 hidden">
+                        <div class="mb-4">
+                            <h2 class="text-lg font-bold">Pay bill</h2>
+                        </div>
+                        <div class="internal-form" onsubmit="(e) => e.preventDefault()">
+                            <div class="input-group">
+                                <label for="selectBank">Select to pay </label>
+                                <div class="input-container">
+                                    <select class="border-none w-full focus:outline-none">
+                                        <option disabled selected>Select Bank </option>
+                                        <option>United Commertial Bank</option>
+                                        <option>City Bank</option>
+                                        <option>Prime asia bank</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label for="selectBank">Biller Account Number </label>
+                                <input type="number" placeholder="Enter 11 Digit Bank Account Number">
+                            </div>
+                            <div class="input-group">
+                                <label for="selectBank">Amount to Add</label>
+                                <input type="text" placeholder="Add amount to add">
+                            </div>
+                            <div class="input-group">
+                                <label for="selectBank">Pin Number</label>
+                                <input type="text" placeholder="Enter 4 digit pin number">
+                            </div>
+                            <button class="disabled:backdrop-grayscale" disabled>Pay Now</button>
+                        </div>
+                    </section>
+                    <!-- Transection -->
+                    <section id="transection" class="px-6 pt-8 pb-8 hidden ">
+                        <div class="">
+                            <div class="hidden">
+                                <img class="w-2/3"
+                                    src="https://cdn1.iconfinder.com/data/icons/characters-and-objects/512/web_development_character_builder___webpage_website_setup_build_dashboard_teamwork_team_work.png"
+                                    alt="" srcset="">
+                                <p class="font-bold text-2xl text-center text-gray-500">Page is under constrction!</p>
+                                <p class="text-center -mt-2 text-gray-400"> I'm working on this page now. It will be
+                                    available
+                                    soon!
+                                </p>
+                            </div>
+
+                            <div class="mb-4">
+                                <h2 class="text-lg font-bold ">Transections </h2>
+                            </div>
+
+                            <div id="load-transection" class="space-y-4 h-full overflow-auto"> </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
         </div>
-
-
-        <!-- Add money -->
-        <section id="add-money" class="px-6 pt-8 pb-8">
-            <div class="mb-4">
-                <h2 class="text-lg font-bold">Add money</h2>
-            </div>
-            <form class="internal-form">
-                <div class="input-group">
-                    <label for="selectBank">Amount to Add</label>
-                    <input type="text" placeholder="Add amount to add" id="amount-to-add">
-                </div>
-                <div class="input-group">
-                    <label for="selectBank">Pin Number</label>
-                    <input type="text" placeholder="Enter 4 digit pin number" id="add-money-pin">
-                </div>
-                <button id="add-money-button">Add money</button>
-            </form>
-        </section>
-
-        <!-- Cash out -->
-        <section id="cash-out" class="px-6 pt-8 pb-8 hidden">
-            <div class="mb-4">
-                <h2 class="text-lg font-bold">Cash Out</h2>
-            </div>
-            <div class="internal-form" onsubmit="(e) => e.preventDefault()">
-                <div class="input-group">
-                    <label for="selectBank">Agent Number </label>
-                    <input type="number" placeholder="Enter 11 Digit Bank Account Number">
-                </div>
-                <div class="input-group">
-                    <label for="selectBank">Amount</label>
-                    <input type="text" placeholder="Add amount to widthdraw" id="cash-out-amount">
-                </div>
-                <div class="input-group">
-                    <label for="selectBank">Pin Number</label>
-                    <input type="text" placeholder="Enter 4 digit pin number" id="cash-out-pin">
-                </div>
-                <button id="cash-out-button">Withdraw money</button>
-            </div>
-        </section>
-
-        <!-- Transfer Money -->
-        <section id="transfer-money" class="px-6 pt-8 pb-8 hidden">
-            <div class="mb-4">
-                <h2 class="text-lg font-bold">Transfer Money</h2>
-            </div>
-            <div class="internal-form" onsubmit="(e) => e.preventDefault()">
-                <div class="input-group">
-                    <label for="selectBank">Reciever Account Number</label>
-                    <input type="number" placeholder="Enter receiver Bank Account Number" id="receiver-id">
-                </div>
-                <div class="input-group">
-                    <label for="selectBank">Amount</label>
-                    <input type="text" placeholder="Add amount to Transfer" id="transfer-amount">
-                </div>
-                <div class="input-group">
-                    <label for="selectBank">Pin Number</label>
-                    <input type="text" placeholder="Enter 4 digit pin number" id="transfer-pin">
-                </div>
-                <button id="transfer-button">Send Now</button>
-            </div>
-        </section>
-
-        <!-- Get Bonus -->
-        <section id="get-bonus" class="px-6 pt-8 pb-8 hidden">
-            <div class="mb-4">
-                <h2 class="text-lg font-bold">Get Bonus</h2>
-            </div>
-            <div class="internal-form" onsubmit="(e) => e.preventDefault()">
-                <div class="input-group">
-                    <label for="selectBank">Enter Bonus Coupon </label>
-                    <input type="number" placeholder="'2025' - try multiple time" id="coupon-number">
-                </div>
-                <button id="coupon-button">Get bonus</button>
-            </div>
-        </section>
-
-        <!-- Pay Bill -->
-        <section id="pay-bill" class="px-6 pt-8 pb-8 hidden">
-            <div class="mb-4">
-                <h2 class="text-lg font-bold">Pay bill</h2>
-            </div>
-            <div class="internal-form" onsubmit="(e) => e.preventDefault()">
-                <div class="input-group">
-                    <label for="selectBank">Select to pay </label>
-                    <div class="input-container">
-                        <select class="border-none w-full focus:outline-none">
-                            <option disabled selected>Select Bank </option>
-                            <option>United Commertial Bank</option>
-                            <option>City Bank</option>
-                            <option>Prime asia bank</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="input-group">
-                    <label for="selectBank">Biller Account Number </label>
-                    <input type="number" placeholder="Enter 11 Digit Bank Account Number">
-                </div>
-                <div class="input-group">
-                    <label for="selectBank">Amount to Add</label>
-                    <input type="text" placeholder="Add amount to add">
-                </div>
-                <div class="input-group">
-                    <label for="selectBank">Pin Number</label>
-                    <input type="text" placeholder="Enter 4 digit pin number">
-                </div>
-                <button class="disabled:backdrop-grayscale" disabled>Pay Now</button>
-            </div>
-        </section>
-        <!-- Transection -->
-        <section id="transection" class="px-6 pt-8 pb-8 hidden">
-            <div class=" ">
-                <div class="hidden">
-                    <img class="w-2/3"
-                        src="https://cdn1.iconfinder.com/data/icons/characters-and-objects/512/web_development_character_builder___webpage_website_setup_build_dashboard_teamwork_team_work.png"
-                        alt="" srcset="">
-                    <p class="font-bold text-2xl text-center text-gray-500">Page is under constrction!</p>
-                    <p class="text-center -mt-2 text-gray-400"> I'm working on this page now. It will be available soon!
-                    </p>
-                </div>
-
-                <div class="mb-4">
-                    <h2 class="text-lg font-bold ">Transections </h2>
-                </div>
-
-                <div id="load-transection"> </div>
-            </div>
-        </section>
-
 
         <div class=" fixed transition-transform origin-top pointer-events-none flex items-center justify-center flex-col "
             id="pointer-follower">

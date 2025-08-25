@@ -57,7 +57,7 @@ let Bank = {
                             }
                         } else {
                             alert('wrong pin ');
-                        }
+                    }
                 }
             },
         }

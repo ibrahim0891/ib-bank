@@ -57,7 +57,7 @@ let transferButton = returnElementById('transfer-button')
 let displayTransection = returnElementById('load-transection')
 
 let loadTransection = () => {
-     displayTransection.innerHTML = ''
+    displayTransection.innerHTML = ''
     BankDatabase[userId].transectionHistory.forEach(element => {
         return displayTransection.innerHTML += `
           <div class="flex flex-col gap-4">
@@ -76,7 +76,7 @@ let loadTransection = () => {
           </div>
           `
     });
-     
+
 }
 
 loadTransection()
@@ -101,14 +101,19 @@ couponButton.addEventListener('click', (e) => {
     let couponNumber = returnElementById('coupon-number').value
     let couponGift = 100
     let user = BankDatabase[userId]
-    couponNumber == COUPON_NUMBER && couponUsed == false ? user.deposite(couponGift, 'bank-transfer') : alert('Ek bonus koybar nibi vai! Eto lov ken?')
-    let bonusTransection = {
-        name : 'Got coupon bonus' , 
-        time : new Date().toLocaleString() , 
-        amount : couponGift
+    if (couponNumber == COUPON_NUMBER && couponUsed == false) {
+        user.deposite(couponGift, 'bank-transfer')
+        let bonusTransection = {
+            name: 'Got coupon bonus',
+            time: new Date().toLocaleString(),
+            amount: couponGift
+        }
+        user.transectionHistory.unshift(bonusTransection)
+        loadTransection()
+    } else {
+        alert('Ek bonus koybar nibi vai! Eto lov ken?')
     }
-    user.transectionHistory.unshift(bonusTransection)
-    loadTransection()
+
     couponUsed = true
     displayBalance.innerText = user['balance']
     saveData('database', BankDatabase)

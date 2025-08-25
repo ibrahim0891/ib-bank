@@ -87,15 +87,37 @@
                 <div class="collapse collapse-arrow bg-base-100 border border-base-300">
                     <input type="radio" name="my-accordion-2" />
                     <div class="collapse-title font-semibold">✨ What's special in this project?</div>
-                    <div class="collapse-content text-sm">
-                        এই দুইটা একাউন্টের মধ্যে একটা থেকে অন্যটায় ফান্ড(সংখ্যা মাত্র) ট্রান্সফার করা যাবে।
-                        একটা থেকে টাকা পাঠিয়ে আরেকটায় লগ ইন করলে দেখা যাবে । <br>
-                        একবার লগ ইন করার পর নেক্সট টাইম আবার লগইন পেজ অ্যাক্সেস করতে গেলে সরাসরি হোম পেজে রিডিরেক্ট করা হবে।  <br>
-                        একই ভাবে লগ ইন করা না থাকলে হোম পেজ অ্যক্সেস করতে গেলে লগ ইন পেজে রিডিরেক্ট করা হবে । <br> 
-                        লগ আউট করলেও ডেটা সেভ থাকবে । একবার লগ ইন করার পর লগ আউট ছাড়া ব্রাউজার ক্লোজ করলেও লগ আউট হয়ে যাবে না। <br>
-                        টোকেন '2025' ব্যাবহার করে ১০০ ডলার পাওয়া যাবে । কিন্তু এটা প্রতি সেশনে শুধু একবার ব্যবহার করা যাব । <br>
-                        নিজের অ্যাকাউন্ট থেকে নিজের অ্যাকাউন্ট নম্বর বসিয়ে টাকা ট্রান্সফার করতে পারবেন না। । <br>
-                        সাধারণত পেজ রিলোড দিলে ডেটা সব চলে যায় । কিন্তু এখানে পিসি রিবুট করলেও ডেটা কোথাও যাবে না। <br>
+                    <div class="collapse-content text-sm space-y-4">
+                        <ul class="list-inside space-y-2 text-gray-700">
+                            <li>
+                                <span class="font-semibold text-blue-600">Fund Transfer:</span>
+                                দুইটি অ্যাকাউন্টের মধ্যে সহজেই ফান্ড (সংখ্যা মাত্র) ট্রান্সফার করা যাবে। একটি থেকে টাকা পাঠিয়ে অন্যটিতে লগইন করলে পরিবর্তন দেখা যাবে।
+                            </li>
+                            <li>
+                                <span class="font-semibold text-blue-600">Smart Redirect:</span>
+                                একবার লগইন করার পর পুনরায় লগইন পেজে গেলে স্বয়ংক্রিয়ভাবে হোম পেজে রিডাইরেক্ট হবে। একইভাবে, লগইন না থাকলে হোম পেজে যেতে চাইলে লগইন পেজে পাঠানো হবে।
+                            </li>
+                            <li>
+                                <span class="font-semibold text-blue-600">Persistent Data:</span>
+                                লগআউট না করলে ডেটা সেভ থাকবে। ব্রাউজার ক্লোজ করলেও লগইন অবস্থায় থাকবেন। পিসি রিবুট করলেও ডেটা থাকবে।
+                            </li>
+                            <li>
+                                <span class="font-semibold text-blue-600">Transaction Update:</span>
+                                দুই পক্ষের ট্রানজেকশন আপডেট হয়। একজন টাকা পাঠালে দুই পক্ষের হিস্টোরিতেই তা দেখা যাবে।
+                            </li>
+                            <li>
+                                <span class="font-semibold text-blue-600">Token Bonus:</span>
+                                টোকেন <code class="bg-gray-100 px-2 py-1 rounded">2025</code> ব্যবহার করে প্রতি সেশনে একবার ১০০ ডলার পাওয়া যাবে।
+                            </li>
+                            <li>
+                                <span class="font-semibold text-blue-600">Self Transfer Blocked:</span>
+                                নিজের অ্যাকাউন্ট নম্বর বসিয়ে নিজের অ্যাকাউন্টে টাকা পাঠানো যাবে না।
+                            </li>
+                            <li>
+                                <span class="font-semibold text-blue-600">Data Safety:</span>
+                                সাধারণত পেজ রিলোড দিলে ডেটা চলে যায়, কিন্তু এখানে ডেটা নিরাপদ থাকবে।
+                            </li>
+                        </ul>
                     </div>
                 </div>
 
