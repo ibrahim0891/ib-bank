@@ -306,12 +306,6 @@
             follower.style.left = x - 10 + 'px'
             follower.style.top = y - 10 + 'px'
         })
-        document.addEventListener('touchmove', (e) => {
-            let x = e.clientX;
-            let y = e.clientY;
-            follower.style.left = x - 10 + 'px'
-            follower.style.top = y - 10 + 'px'
-        })
         document.addEventListener('mousedown', (e) => {
             follower.style.transform = `scale(0.8)`
         })
@@ -325,11 +319,27 @@
         document.addEventListener('mouseenter', (e) => {
             follower.style.display = 'block'
         })
-        
-        document.addEventListener('touchmove' , (e) => {
-            follower.style.transform = `scale(0.8)`
+
+        document.addEventListener('touchmove', (e) => {
+            let touch = e.touches[0];
+            if (touch) {
+            let x = touch.clientX;
+            let y = touch.clientY;
+            follower.style.left = x - 10 + 'px'
+            follower.style.top = y - 10 + 'px'
+            }
         })
-        document.addEventListener('touchend' , (e) => {
+        document.addEventListener('touchstart', (e) => {
+            follower.style.transform = `scale(0.8)`
+            let touch = e.touches[0];
+            if (touch) {
+            let x = touch.clientX;
+            let y = touch.clientY;
+            follower.style.left = x - 10 + 'px'
+            follower.style.top = y - 10 + 'px'
+            }
+        })
+        document.addEventListener('touchend', (e) => {
             follower.style.transform = `scale(1)`
         })
 
