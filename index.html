@@ -35,7 +35,7 @@
                     }
                 }
                 button{
-                    @apply rounded-full w-full transition-all duration-200 active:scale-95 cursor-pointer bg-blue-500 text-white font-bold py-4;
+                    @apply rounded-full w-full transition-all duration-200 active:scale-95 cursor-pointer bg-blue-500 text-white font-bold py-4 disabled:bg-gray-300 disabled:text-gray-400;
                 }
             }
             .tab-btn {
@@ -59,7 +59,7 @@
 
         <!-- page padding div -->
         <!-- back bar  --> 
-            <div class="flex items-center justify-between  py-5 bg-white px-6 shadow-sm  sticky top-0">
+            <div class="flex items-center justify-between  py-5 backdrop-blur-md bg-slate-50/60 px-6 shadow-sm  sticky top-0">
                 <div class="flex items-center gap-2">
                     <img class="w-12" src="./assets/Group.png" alt="">
                     <div class="">
@@ -90,37 +90,37 @@
                     <div class="tab-card border border-gray-200 flex items-center justify-center flex-col rounded-2xl py-4 text-gray-600 font-serif space-y-4 "
                         data-tab="add-money">
                         <img src="./assets/wallet1.png" alt="">
-                        <span>Add money</span>
+                        <span class="text-[0.75rem]">Add money</span>
                     </div>
 
                     <div class="tab-card border border-gray-200 flex items-center justify-center flex-col rounded-2xl py-4 text-gray-600 font-serif space-y-4 "
                         data-tab="cash-out">
                         <img src="./assets/send1.png" alt="">
-                        <span>Cash out</span>
+                        <span class="text-[0.75rem]">Cash out</span>
                     </div>
 
                     <div class="tab-card border border-gray-200 flex items-center justify-center flex-col rounded-2xl py-4 px-2 text-gray-600 font-serif space-y-4 "
                         data-tab="transfer-money">
                         <img src="./assets/bonus1.png" alt="">
-                        <span>Transfer Money</span>
+                        <span class="text-[0.75rem]">Transfer Money</span>
                     </div>
 
                     <div class="tab-card border border-gray-200 flex items-center justify-center flex-col rounded-md py-4 text-gray-600 font-serif space-y-4 "
                         data-tab="get-bonus">
                         <img src="./assets/money1.png" alt="">
-                        <span>Get Bonus</span>
+                        <span class="text-[0.75rem]">Get Bonus</span>
                     </div>
 
                     <div class="tab-card border border-gray-200 flex items-center justify-center flex-col rounded-md py-4 text-gray-600 font-serif space-y-4 "
                         data-tab="pay-bill">
                         <img src="./assets/purse1.png" alt="">
-                        <span>Pay bill</span>
+                        <span class="text-[0.75rem]">Pay bill</span>
                     </div>
 
                     <div class="tab-card border border-gray-200 flex items-center justify-center flex-col rounded-md py-4 text-gray-600 font-serif space-y-4 "
                         data-tab="transection">
                         <img src="./assets/transaction1.png" alt="">
-                        <span>Transection</span>
+                        <span class="text-[0.75rem]">Transection</span>
                     </div>
 
 
@@ -211,7 +211,7 @@
                         <div class="mb-4">
                             <h2 class="text-lg font-bold">Pay bill</h2>
                         </div>
-                        <div class="internal-form" onsubmit="(e) => e.preventDefault()">
+                        <div class="internal-form hidden" onsubmit="(e) => e.preventDefault()">
                             <div class="input-group">
                                 <label for="selectBank">Select to pay </label>
                                 <div class="input-container">
@@ -235,22 +235,23 @@
                                 <label for="selectBank">Pin Number</label>
                                 <input type="text" placeholder="Enter 4 digit pin number">
                             </div>
-                            <button class="disabled:backdrop-grayscale" disabled>Pay Now</button>
+                            <button disabled>Pay Now</button>
+                        </div>
+
+                        <div class="flex items-center flex-col gap-4 mb-12">
+                            <img class="w-2/3"
+                                src="https://cdn1.iconfinder.com/data/icons/characters-and-objects/512/web_development_character_builder___webpage_website_setup_build_dashboard_teamwork_team_work.png"
+                                alt="" srcset="">
+                            <p class="font-bold text-2xl text-center text-gray-500">Page is under constrction!</p>
+                            <p class="text-center -mt-2 text-gray-400"> I'm working on this page now. It will be
+                                available
+                                soon!
+                            </p>
                         </div>
                     </section>
                     <!-- Transection -->
                     <section id="transection" class="px-6 pt-8 pb-8 hidden ">
                         <div class="">
-                            <div class="hidden">
-                                <img class="w-2/3"
-                                    src="https://cdn1.iconfinder.com/data/icons/characters-and-objects/512/web_development_character_builder___webpage_website_setup_build_dashboard_teamwork_team_work.png"
-                                    alt="" srcset="">
-                                <p class="font-bold text-2xl text-center text-gray-500">Page is under constrction!</p>
-                                <p class="text-center -mt-2 text-gray-400"> I'm working on this page now. It will be
-                                    available
-                                    soon!
-                                </p>
-                            </div>
 
                             <div class="mb-4">
                                 <h2 class="text-lg font-bold ">Transections </h2>
@@ -305,6 +306,12 @@
             follower.style.left = x - 10 + 'px'
             follower.style.top = y - 10 + 'px'
         })
+        document.addEventListener('touchmove', (e) => {
+            let x = e.clientX;
+            let y = e.clientY;
+            follower.style.left = x - 10 + 'px'
+            follower.style.top = y - 10 + 'px'
+        })
         document.addEventListener('mousedown', (e) => {
             follower.style.transform = `scale(0.8)`
         })
@@ -317,6 +324,13 @@
         })
         document.addEventListener('mouseenter', (e) => {
             follower.style.display = 'block'
+        })
+        
+        document.addEventListener('touchmove' , (e) => {
+            follower.style.transform = `scale(0.8)`
+        })
+        document.addEventListener('touchend' , (e) => {
+            follower.style.transform = `scale(1)`
         })
 
     </script>

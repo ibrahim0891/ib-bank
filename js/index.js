@@ -58,24 +58,28 @@ let displayTransection = returnElementById('load-transection')
 
 let loadTransection = () => {
     displayTransection.innerHTML = ''
-    BankDatabase[userId].transectionHistory.forEach(element => {
-        return displayTransection.innerHTML += `
-          <div class="flex flex-col gap-4">
-              <div class="flex items-center justify-start bg-white rounded-lg p-4 gap-4">
-                  <img class="w-12 bg-gray-100 p-2 rounded-md" src="./assets/money1.png" alt="">
-                  <div>
-                      <h3 class='font-bold text-lg'> ${element.name} </h3>
-                      <p>
-                          <span>
-                              ${element.amount}$ 
-                          </span> at 
-                          <span> ${element.time} </span>
-                      </p>
+    if (BankDatabase[userId].transectionHistory.length == 0 ) {
+        return displayTransection.innerHTML = `<div class='h-full aspect-video w-full flex items-center justify-center text-gray-500'> You have no transections yet! </div>`
+    } else {
+        BankDatabase[userId].transectionHistory.forEach(element => {
+            return displayTransection.innerHTML += `
+              <div class="flex flex-col gap-4">
+                  <div class="flex items-center justify-start bg-white rounded-lg p-4 gap-4">
+                      <img class="w-12 bg-gray-100 p-2 rounded-md" src="./assets/money1.png" alt="">
+                      <div>
+                          <h3 class='font-bold text-lg'> ${element.name} </h3>
+                          <p>
+                              <span>
+                                  ${element.amount}$ 
+                              </span> at 
+                              <span> ${element.time} </span>
+                          </p>
+                      </div>
                   </div>
               </div>
-          </div>
-          `
-    });
+              `
+        });
+    }
 
 }
 
