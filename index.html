@@ -19,7 +19,9 @@
         <style type="text/tailwindcss">
             * {
                font-family: "Lexend", sans-serif;
+                cursor: none !important;
             }
+ 
             .internal-form {
                 @apply bg-white rounded-3xl p-6 space-y-4 ; 
                 .input-group{
@@ -57,7 +59,7 @@
 
         <!-- page padding div -->
         <!-- back bar  -->
-        <div class="flex items-center justify-between  py-5 bg-white px-6 shadow-sm">
+        <div class="flex items-center justify-between  py-5 bg-white px-6 shadow-sm sticky top-0">
             <div class="flex items-center gap-2">
                 <img class="w-12" src="./assets/Group.png" alt="">
                 <div class="">
@@ -66,11 +68,13 @@
                     <p class="text-sm" id="show-user-info"> </p>
                 </div>
             </div>
-            <button class="border px-5 py-2 rounded-md btn text-gray-500 flex items-center justify-center gap-2" onclick="logout()">
+            <button class="border px-5 py-2 rounded-md btn text-gray-500 flex items-center justify-center gap-2"
+                onclick="logout()">
                 <span>Logout</span>
                 <i class="fa-solid fa-arrow-right-from-bracket "></i>
             </button>
         </div>
+
         <div class="px-6 bg-white rounded-b-3xl">
 
             <section class="space-y-2 pt-8 ">
@@ -192,7 +196,7 @@
             </div>
             <div class="internal-form" onsubmit="(e) => e.preventDefault()">
                 <div class="input-group">
-                    <label for="selectBank">Enter Bonus Coupon </label> 
+                    <label for="selectBank">Enter Bonus Coupon </label>
                     <input type="number" placeholder="'2025' - try multiple time" id="coupon-number">
                 </div>
                 <button id="coupon-button">Get bonus</button>
@@ -233,13 +237,29 @@
         </section>
         <!-- Transection -->
         <section id="transection" class="px-6 pt-8 pb-8 hidden">
-            <div class="w-full h-full flex items-center justify-center flex-col gap-4">
-                <img class="w-2/3" src="https://cdn1.iconfinder.com/data/icons/characters-and-objects/512/web_development_character_builder___webpage_website_setup_build_dashboard_teamwork_team_work.png" alt="" srcset="">
-                <p class="font-bold text-2xl text-center text-gray-500">Page is under constrction!</p>
-                <p class="text-center -mt-2 text-gray-400"> I'm working on this page now. It will be available soon!</p>
+            <div class=" ">
+                <div class="hidden">
+                    <img class="w-2/3"
+                        src="https://cdn1.iconfinder.com/data/icons/characters-and-objects/512/web_development_character_builder___webpage_website_setup_build_dashboard_teamwork_team_work.png"
+                        alt="" srcset="">
+                    <p class="font-bold text-2xl text-center text-gray-500">Page is under constrction!</p>
+                    <p class="text-center -mt-2 text-gray-400"> I'm working on this page now. It will be available soon!
+                    </p>
+                </div>
+
+                <div class="mb-4">
+                    <h2 class="text-lg font-bold ">Transections </h2>
+                </div>
+
+                <div id="load-transection"> </div>
             </div>
         </section>
 
+
+        <div class=" fixed transition-transform origin-top pointer-events-none flex items-center justify-center flex-col "
+            id="pointer-follower">
+            <img src="https://cursor.in/assets/pointinghand.svg" class="w-12" alt="">
+        </div>
 
 
     </body>
@@ -267,6 +287,30 @@
                 card.classList.add("tab-card-active");
             });
         });
+
+        let mouseArea = document.getElementById('mouse-move-area')
+
+        let follower = document.getElementById('pointer-follower')
+
+        document.addEventListener('mousemove', (e) => {
+            let x = e.clientX;
+            let y = e.clientY;
+            follower.style.left = x - 10 + 'px'
+            follower.style.top = y - 10 + 'px'
+        })
+        document.addEventListener('mousedown', (e) => {
+            follower.style.transform = `scale(0.8)`
+        })
+        document.addEventListener('mouseup', (e) => {
+            follower.style.transform = `scale(1)`
+        })
+
+        document.addEventListener('mouseleave', (e) => {
+            follower.style.display = 'none'
+        })
+        document.addEventListener('mouseenter', (e) => {
+            follower.style.display = 'block'
+        })
 
     </script>
 
