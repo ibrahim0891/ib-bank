@@ -138,11 +138,11 @@
                         <form class="internal-form">
                             <div class="input-group">
                                 <label for="selectBank">Amount to Add</label>
-                                <input type="text" placeholder="Add amount to add" id="amount-to-add">
+                                <input type="number" placeholder="Add amount to add" id="amount-to-add">
                             </div>
                             <div class="input-group">
                                 <label for="selectBank">Pin Number</label>
-                                <input type="text" placeholder="Enter 4 digit pin number" id="add-money-pin">
+                                <input type="number" placeholder="Enter 4 digit pin number" id="add-money-pin">
                             </div>
                             <button id="add-money-button">Add money</button>
                         </form>
@@ -160,11 +160,11 @@
                             </div>
                             <div class="input-group">
                                 <label for="selectBank">Amount</label>
-                                <input type="text" placeholder="Add amount to widthdraw" id="cash-out-amount">
+                                <input type="number" placeholder="Add amount to widthdraw" id="cash-out-amount">
                             </div>
                             <div class="input-group">
                                 <label for="selectBank">Pin Number</label>
-                                <input type="text" placeholder="Enter 4 digit pin number" id="cash-out-pin">
+                                <input type="number" placeholder="Enter 4 digit pin number" id="cash-out-pin">
                             </div>
                             <button id="cash-out-button">Withdraw money</button>
                         </div>
@@ -182,11 +182,11 @@
                             </div>
                             <div class="input-group">
                                 <label for="selectBank">Amount</label>
-                                <input type="text" placeholder="Add amount to Transfer" id="transfer-amount">
+                                <input type="number" placeholder="Add amount to Transfer" id="transfer-amount">
                             </div>
                             <div class="input-group">
                                 <label for="selectBank">Pin Number</label>
-                                <input type="text" placeholder="Enter 4 digit pin number" id="transfer-pin">
+                                <input type="number" placeholder="Enter 4 digit pin number" id="transfer-pin">
                             </div>
                             <button id="transfer-button">Send Now</button>
                         </div>
@@ -200,7 +200,7 @@
                         <div class="internal-form" onsubmit="(e) => e.preventDefault()">
                             <div class="input-group">
                                 <label for="selectBank">Enter Bonus Coupon </label>
-                                <input type="number" placeholder="'2025' - try multiple time" id="coupon-number">
+                                <input type="text" placeholder="'2025' - try multiple time" id="coupon-number">
                             </div>
                             <button id="coupon-button">Get bonus</button>
                         </div>
